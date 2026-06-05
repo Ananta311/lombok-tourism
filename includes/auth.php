@@ -37,9 +37,9 @@ function getCurrentUser() {
     $db = getDB();
     $id = intval($_SESSION['user_id']);
     $stmt = $db->prepare("SELECT u.*, p.full_name, p.bio, p.phone, p.location, p.foto_profile 
-                          FROM users u 
-                          LEFT JOIN profile p ON p.user_id = u.id 
-                          WHERE u.id = ?");
+                        FROM users u 
+                        LEFT JOIN profile p ON p.user_id = u.id 
+                        WHERE u.id = ?");
     $stmt->bind_param("i", $id);
     $stmt->execute();
     return $stmt->get_result()->fetch_assoc();
