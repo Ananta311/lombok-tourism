@@ -7,8 +7,8 @@ $db = getDB();
 // Fetch featured wisata
 $featured = $db->query("
     SELECT tw.*, wf.foto as foto_utama,
-        COALESCE(AVG(r.rating), tw.rating_awal) as avg_rating,
-        COUNT(DISTINCT r.id) as total_rating
+           COALESCE(AVG(r.rating), tw.rating_awal) as avg_rating,
+           COUNT(DISTINCT r.id) as total_rating
     FROM tempat_wisata tw
     LEFT JOIN wisata_foto wf ON wf.wisata_id = tw.id AND wf.is_primary = 1
     LEFT JOIN rating r ON r.wisata_id = tw.id
